@@ -28,6 +28,7 @@ var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'MongoDB connection error:'));
 
 const reviews = require('./controllers/reviews')(app);
+const comments = require('./controllers/comments')(app);
 
 // define app route
 app.listen(process.env.PORT || 3000, () =>{
