@@ -23,7 +23,7 @@ module.exports = function (app) {
     app.post('/reviews', (req, res) => {
         Review.create(req.body)
             .then((review) => {
-                console.log(review);
+                console.log(review, res.status);
                 res.redirect(`/reviews/${review._id}`)
             })
             .catch((err) => {

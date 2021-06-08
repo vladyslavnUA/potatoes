@@ -22,7 +22,7 @@ handlebars: allowInsecurePrototypeAccess(Handlebars)}))
 app.set('view engine', 'handlebars');
 
 // connects our server with MongoDB client
-mongoose.connect(`mongodb+srv://test:test@arrypt.2dhwg.mongodb.net/test`, { useNewUrlParser: true, useUnifiedTopology: true })
+mongoose.connect(`mongodb+srv://${process.env.USERNAME}:${process.env.PASSWORD}@arrypt.2dhwg.mongodb.net/test`, { useNewUrlParser: true, useUnifiedTopology: true })
 // ${process.env.USERNAME} ${process.env.PASSWORD}
 var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'MongoDB connection error:'));
