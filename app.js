@@ -4,6 +4,8 @@ const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const methodOverride = require('method-override');
 const Handlebars = require('handlebars');
+const cookieParser = require('cookie-parser');
+const checkAuth = require('./middleware/checkAuth');
 require('dotenv').config();
 const app = express();
 
@@ -13,7 +15,15 @@ const { allowInsecurePrototypeAccess } = require('@handlebars/allow-prototype-ac
 
 // The following line must appear AFTER const app = express() and before your routes!
 app.use(bodyParser.urlencoded({ extended: true }), methodOverride('_method'));
+
+// static files
 app.use(express.static('public'));
+
+// middleware for parsing Cookies (needed for JWT)
+app.use(cookieParser());
+
+// check authentication of user
+app.use(checkAuth);
 
 // set the templating engine -> handlebars
 app.engine('handlebars', exphbs({ defaultLayout: 'main',

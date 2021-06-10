@@ -5,9 +5,13 @@ module.exports = function (app) {
 
     // get home route, all reviews
     app.get('/', (req, res) => {
+
+        // retrieve current user
+        const currentUser = req.user;
+
         Review.find().lean()
             .then(reviews => {
-                res.render('reviews-index', { reviews: reviews });
+                res.render('reviews-index', { reviews: reviews, currentUser });
             })
             .catch(err => {
                 console.log(err);
