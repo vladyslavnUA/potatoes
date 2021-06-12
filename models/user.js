@@ -5,6 +5,7 @@ const bcrypt = require('bcryptjs');
 var userSchema = new Schema({
     username: {type: String, required: true},
     password: {type: String, select: false},
+    reviews: [{ type: Schema.Types.ObjectId, ref: 'Review' }],
 }, { timestamps: true });
 
 

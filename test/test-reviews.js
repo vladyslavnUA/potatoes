@@ -38,6 +38,7 @@ describe('Reviews', () => {
         "title": "Another test",
         "movie-title": "La la land",
         "description": "A good movie",
+        "author": "60c02752f72f666114574db5",
     }
 
     // TEST CREATE AND DETAIL PAGE

@@ -1,9 +1,12 @@
-<form method="post" action='/reviews'>
+{{> navbar }}
+<div class="container">
+    <form method="post" action='/reviews/new'>
 
-    {{> reviews-form}}
-    
-    <p>
-        <button type="submit">Save Review</button>
-    </p>
-    
-</form>
+        {{> reviews-form}}
+        
+        <p>
+            <button type="submit">Save Review</button>
+        </p>
+        
+    </form>
+</div>

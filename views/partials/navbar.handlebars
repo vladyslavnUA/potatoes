@@ -1,10 +1,12 @@
 <nav class="navbar navbar-default">
   <div class="container-fluid">
     <div class="pull-left">
+      
       {{#if currentUser}}
         <p>Hi, {{currentUser.username}}</p>
         <a href="/reviews/new" class="btn btn-primary">New Review</a>
       {{/if}}
+      <a class="btn btn-success" href="/">Home</a>
     </div>
 
     <ul class="nav navbar-nav navbar-right">

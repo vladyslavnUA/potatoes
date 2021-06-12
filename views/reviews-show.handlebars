@@ -1,22 +1,33 @@
-<a href="/">Back to Home</a>
-<div class="row">
-    <h1>{{review.title}}</h1>
-    <h2>{{review.movieTitle}}</h2>
-    <p>{{review.description}}</p>
+{{> navbar }}
+{{!-- <a class="btn btn-success" href="/">Back to Home</a> --}}
+<div class="container">
+    <br><br>
+    <div class="row">
+        <h1>{{review.title}}</h1>
+        <p class="text-muted">Posted: {{createdAtFormatted}}</p>
+        <p class="text-muted">Last Updated: {{updatedAtFormatted}}</p>
+        <small>By: {{review.author.username}}</small>
+        <h2>{{review.movieTitle}}</h2>
+        <p>{{review.description}}</p>
 
-    <p><a href="/reviews/{{review._id}}/edit">Edit</a></p>
+        {{#if theAuthor}}
+            <p><a class="btn btn-info" href="/reviews/{{review._id}}/edit">Edit</a></p>
 
-    <p>
-        <form action="/reviews/{{review._id}}?_method=DELETE" method="post">
-            <button type="submit">Delete</button>
-        </form>
-    </p>
+            <p>
+                <form action="/reviews/{{review._id}}?_method=DELETE" method="post">
+                    <button class="btn btn-danger" type="submit">Delete</button>
+                </form>
+            </p>
+        {{/if}}
+    </div>
+
+    <hr>
+
+    {{> comment-form}}
+    <br>
+    <div class="container mb-5">
+        {{#each comments}}
+            {{> comment}}
+        {{/each}}
+    </div>
 </div>
-
-<hr>
-
-{{> comment-form}}
-
-{{#each comments}}
-    {{> comment}}
-{{/each}}
